@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public final class ObjectsUtils {
   public static void throwNPEIfNull(final Object ...args) {
-    if (Arrays.stream(args).toList().stream().anyMatch(Objects::isNull)) {
+    if (Arrays.stream(args).anyMatch(Objects::isNull)) {
       throw new NullPointerException();
     }
   }
