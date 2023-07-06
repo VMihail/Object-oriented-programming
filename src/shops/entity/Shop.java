@@ -33,6 +33,11 @@ public record Shop(int id, String name, Address address, Balance balance, Map<Pr
     balance.topUpBalance(product.price() * count);
   }
 
+  public Product findProductById(final int id) {
+    final var array = products.keySet().stream().filter(product -> product.id() == id).toArray();
+    return array.length == 0 ? null : (Product) array[0];
+  }
+
   private void addToMap(final Product product, final int count) {
     if (products.containsKey(product)) {
       products.put(product, products.get(product) + count);
